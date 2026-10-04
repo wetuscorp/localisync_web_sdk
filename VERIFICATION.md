@@ -73,3 +73,14 @@ were corrected before publication, without skipping Windows checks.
 WebKit is not Safari, and Chromium is not Edge. Previous browser majors, physical mobile/minimum hardware, long-running
 soak and production-network acceptance remain outside the executed local matrix.
 No six-platform or production SLA claim follows from publication.
+
+## Published 0.1.0
+
+Published on 2026-10-04 by wetusco. The immutable v0.1.0 source is
+`c48510a8aada1015491abd82bcf2abcfccb5f7f8`; all six jobs in
+[run 37201987095](https://github.com/wetuscorp/localisync_web_sdk/actions/runs/37201987095)
+passed. The npm tarball SHA-512 matches that run's archive. A clean npm consumer,
+without workspace overrides, verified framework-free installation, optional React
+imports, generated types, the GitHub generator and the first offline translation.
+Public script/generator downloads matched SHA256SUMS. Release assets and performance
+measurements are attached to [v0.1.0](https://github.com/wetuscorp/localisync_web_sdk/releases/tag/v0.1.0).

@@ -5,6 +5,16 @@ Prepared translations are synchronous; bundled and verified cached messages rema
 available during delivery failures. Updates check once at startup, then on explicit
 `refresh()` calls. React is optional. SDK code is MIT licensed.
 
+Install [localisync_sdk 0.1.0 from npm](https://www.npmjs.com/package/localisync_sdk):
+
+```sh
+npm install localisync_sdk@0.1.0
+```
+
+For plain HTML, download the matching `localisync.js` and `worker.js` from the
+[0.1.0 release](https://github.com/wetuscorp/localisync_web_sdk/releases/tag/v0.1.0)
+and host both files with your application. Follow the script guide for initialization.
+
 - [Package and API](sdks/web/packages/web/README.md)
 - [Core](sdks/web/packages/web/CORE.md) · [React](sdks/web/packages/web/REACT.md)
 - [Guides](docs/guides/quick-start.md) · [Development generator](sdks/web/packages/cli/README.md)

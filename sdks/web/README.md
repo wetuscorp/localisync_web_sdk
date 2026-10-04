@@ -6,8 +6,10 @@ share one MIT package and delivery protocol v1. The first screen can use bundled
 messages without waiting for the network. The default policy checks once at startup;
 subsequent refresh and optional activation are explicit.
 
-The source is prepared for the first public release. Availability is recorded in
-the release verification record; a build alone is not a registry publication.
+Version [0.1.0 is available on npm](https://www.npmjs.com/package/localisync_sdk).
+Download matching self-hosted JavaScript files and the development generator from
+the [public release](https://github.com/wetuscorp/localisync_web_sdk/releases/tag/v0.1.0).
+The release links CI evidence and platform limits; availability is not an SLA.
 
 - [Quick start](https://docs.localisync.com/sdks/web/quick-start/)
 - [Browser package](packages/web/README.md)

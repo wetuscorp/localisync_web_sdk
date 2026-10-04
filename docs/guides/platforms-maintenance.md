@@ -5,7 +5,7 @@ sidebar:
   order: 7
 ---
 
-The support target is the current and preceding major Chrome, Edge, Firefox and Safari releases, plus long-lived Node 24. Targets are not evidence that every combination has run. Local browser results and outstanding platform gates are maintained in the repository verification record. The first public single-package release is being prepared. Only executed checks in its verification record count as release evidence.
+The support target is the current and preceding major Chrome, Edge, Firefox and Safari releases, plus long-lived Node 24. Targets are not evidence that every combination has run. Local browser results and outstanding platform gates are maintained in the repository verification record. Version [0.1.0 is published on npm](https://www.npmjs.com/package/localisync_sdk). Its [public release](https://github.com/wetuscorp/localisync_web_sdk/releases/tag/v0.1.0) links the same-commit Linux/macOS/Windows and real-browser CI results, matching assets and measured limits. Only executed checks count as release evidence.
 
 ## Reproduce checks
 
