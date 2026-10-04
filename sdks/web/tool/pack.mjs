@@ -1,7 +1,7 @@
 import { runPnpm } from './process.mjs'
 import { execFileSync } from 'node:child_process'
 import { mkdir, readFile, writeFile, mkdtemp, stat } from 'node:fs/promises'
-import { resolve, join, isAbsolute } from 'node:path'
+import { resolve, join, isAbsolute, basename, dirname } from 'node:path'
 import { tmpdir } from 'node:os'
 import assert from 'node:assert/strict'
 
@@ -14,16 +14,31 @@ for (const name of ['web', 'cli']) {
   const output = runPnpm(['pack', '--pack-destination', destination, '--json'], { cwd, encoding: 'utf8' })
   const result = JSON.parse(output),
     archive = isAbsolute(result.filename) ? result.filename : join(destination, result.filename)
-  const listing = execFileSync('tar', ['-tzf', archive], { encoding: 'utf8' })
+  // A drive letter is interpreted as a remote host by GNU tar on Windows.
+  const tarOptions = { cwd: dirname(archive), encoding: 'utf8', maxBuffer: 32 * 1024 * 1024 }
+  const listing = execFileSync('tar', ['-tzf', basename(archive)], tarOptions)
   assert(listing.includes('package/LICENSE'))
   assert(!listing.split('\n').some(path => /(?:^|\/)(?:test|fixture|\.env|node_modules)(?:\/|$)/.test(path)))
-  const manifest = JSON.parse(execFileSync('tar', ['-xOf', archive, 'package/package.json'], { encoding: 'utf8' }))
+  const manifest = JSON.parse(execFileSync('tar', ['-xOf', basename(archive), 'package/package.json'], tarOptions))
   assert(!JSON.stringify(manifest.dependencies ?? {}).includes('workspace:'))
   assert(!JSON.stringify(manifest.dependencies ?? {}).includes('delivery-protocol'))
   if (manifest.name === 'localisync_sdk') {
     assert.equal(Object.keys(manifest.dependencies ?? {}).length, 0)
     assert.equal(manifest.peerDependenciesMeta.react.optional, true)
     assert(!listing.includes('package/test/'))
+  }
+  for (const file of listing.trim().split(/\r?\n/)) {
+    assert(file.startsWith('package/') && !file.split('/').includes('..'))
+    if (file.endsWith('/')) continue
+    const contents = execFileSync('tar', ['-xOf', basename(archive), file], tarOptions)
+    assert(
+      !/(?:\/Users\/|\/home\/runner\/|[A-Z]:\\Users\\|\/private\/var\/folders\/)/.test(contents),
+      'Machine path leaked into package: ' + file
+    )
+    assert(
+      !/-----BEGIN (?:RSA |OPENSSH |EC )?PRIVATE KEY-----\s+[A-Za-z0-9+/=]{64}/.test(contents),
+      'Private key material in package: ' + file
+    )
   }
   results.push({
     name: manifest.name,

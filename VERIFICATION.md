@@ -1,7 +1,9 @@
 # Web SDK 0.1.0 release acceptance
 
-Candidate preparation: 2026-10-04. Publication and hosted CI are not yet recorded
-as completed. Source provenance is recorded separately in export-manifest.json.
+Candidate preparation: 2026-10-04. Source provenance is recorded in
+export-manifest.json. The version tag identifies the published source; its GitHub
+Release links the successful same-commit CI run and matching archive hashes.
+Preparation records alone do not establish registry publication.
 
 ## Executed local checks
 
@@ -51,12 +53,23 @@ update and a verified offline restart. Process RSS ranged from 1.43 to 1.71 GB;
 this short run does not establish a leak-free long-running service. Worker/cache
 failure and disposal boundaries are also covered by acceptance tests.
 
-## Remaining evidence
+Warm-focus interaction checks used 30 control inputs and 150 active inputs per
+profile. Control/active p95 automation round-trip times were 1.89/6.95 ms (small),
+1.50/3.65 ms (ICU), and 2.08/2.42 ms (large). Large/ICU probes ran during checking;
+the small payload was already ready. These include browser automation overhead,
+not a real-user interaction percentile.
 
-Hosted Web CI is authorized and candidate runs are pending. The first Windows
-run found the test tool launcher did not accept pnpm's native executable; the launcher
-now supports it without a shell. Real Edge and current Safari execution for this
-release have not yet been recorded. WebKit is not Safari, and Chromium is
-not Edge. Previous browser majors, physical mobile/minimum hardware, long-running
+## Public CI release gate
+
+All six jobs must pass on the tagged candidate: Linux, macOS and Windows package
+checks; Linux Chromium/Chrome/Firefox/WebKit, React and Next.js acceptance; and
+separate real Safari/macOS and Edge/Windows acceptance. Result artifacts record
+actual versions. No workflow publishes to npm. Initial Windows runs exposed the
+native pnpm launcher and GNU tar drive-letter handling in release tools; these
+were corrected before publication, without skipping Windows checks.
+
+## Remaining platform limits
+
+WebKit is not Safari, and Chromium is not Edge. Previous browser majors, physical mobile/minimum hardware, long-running
 soak and production-network acceptance remain outside the executed local matrix.
 No six-platform or production SLA claim follows from publication.

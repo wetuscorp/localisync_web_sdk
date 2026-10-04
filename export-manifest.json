@@ -7,7 +7,7 @@
     "CONTRIBUTING.md": "9dd46c4ed6d63fc9509606d974931e5fd4309005693b12515325241e7f225df1",
     "LICENSE": "7f59085b9167d9b978d1b82c0c0e5629c918c48e508c378189637048c3c85697",
     "README.md": "7ed60e1675158683b574cda8b7210cfde68834eb71cf7f3d271dd683fad7707e",
-    "VERIFICATION.md": "0e4a03ede1bd4b678e0fb5f3c571cd0b5c4246dbea48dd14e3af4f0c2c445e28",
+    "VERIFICATION.md": "559589534c7bc3626331c7a0c87640bb35890b7697771ecc5903644d5db847f1",
     "assets/brand/symbol.svg": "9f04fbc33eca990dce30597851453d8792537d690745984d46a1fb3d97e988d6",
     "docs/guides/api.md": "00607a788d59bfcb8869594d6f2c6ebb629f4287a8feecc5f7946cc2a8c7e291",
     "docs/guides/html.md": "2240f0b3906f0e12a91ff77bbf18e1062a949b02ca37b24f3e367d6b2032a645",
@@ -117,7 +117,7 @@
     "sdks/web/tool/generate_cldr.py": "bfe7e69f1e8e77422fdd2b3698a96107b6c10ca9133279a69c8b67c80d2e004b",
     "sdks/web/tool/interaction-benchmark.mjs": "8b1307fa43010748e4bd951bd3f7955ec6385cf13862d0810bbc60c37174f610",
     "sdks/web/tool/next-tests.mjs": "3d9eda5d42234f2280e9c4814b7e1c4f523183fa7257fb7380957ed0803fe03a",
-    "sdks/web/tool/pack.mjs": "6bfa3e32c44cb25e5e3508033dc79e7887d0b77dbb27c5b1f7e645cdd7996f45",
+    "sdks/web/tool/pack.mjs": "67136d7d5d6ff371c2d225a39426202da9c2965eff469bd628be06ee5b3ba9a3",
     "sdks/web/tool/performance-fixtures.mjs": "0fd0760a3003649f6b2f73265bf3234bc7ad9e139b7d9f300b4e9da91cc86d68",
     "sdks/web/tool/process.mjs": "17165cc8e95e5b1ce39cd364ffd1392049318e0f417e17edf9c310475479a21a",
     "sdks/web/tool/react-tests.mjs": "ad753bfae7bf80452c3d964a02bc2958d985411cd78b57342b0fa4393b3af230",
@@ -129,5 +129,5 @@
   },
   "preview": false,
   "schema": 1,
-  "sourceCommit": "0e8f6e4362b148d9da256ff30f0c40b291c82c6b"
+  "sourceCommit": "2344fdc1730399f8d62ceda778ed9abdbeacae70"
 }
