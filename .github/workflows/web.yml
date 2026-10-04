@@ -1,0 +1,118 @@
+name: Web SDK acceptance
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: web-validation-${{ github.ref }}
+  cancel-in-progress: false
+defaults:
+  run:
+    shell: bash
+env:
+  NEXT_TELEMETRY_DISABLED: '1'
+  SDK_BROWSER_TARGETS: chromium,firefox,webkit,chrome
+jobs:
+  packages:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, macos-15, windows-2022]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '24.16.0'
+      - uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm check
+      - run: pnpm test:sdk:web
+      - run: pnpm test:sdk:web:cli
+      - run: pnpm sdk:web:pack
+      - run: pnpm release:assets
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: web-packages-${{ matrix.os }}-${{ github.sha }}
+          path: .local/web-sdk-pack/
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 14
+  browsers:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '24.16.0'
+      - uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec playwright install --with-deps chromium firefox webkit chrome
+      - run: pnpm test:sdk:web:browser
+      - run: pnpm test:sdk:web:react
+      - run: pnpm test:sdk:web:next
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: web-browsers-${{ github.sha }}
+          path: |
+            .local/web-sdk-browser/
+            .local/web-sdk-react/
+            .local/web-sdk-next/
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 14
+  native-browsers:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-15
+            browser: safari
+          - os: windows-2022
+            browser: edge
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '24.16.0'
+      - uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1
+      - run: pnpm install --frozen-lockfile
+      - if: runner.os == 'Windows'
+        run: pnpm exec playwright install msedge
+      - name: Native browser and React acceptance
+        env:
+          SDK_BROWSER_TARGETS: ${{ matrix.browser }}
+        run: |
+          mkdir -p .local/web-sdk-browser
+          if [ '${{ runner.os }}' = 'macOS' ]; then
+            sudo safaridriver --enable
+            safaridriver -p 4447 > .local/web-sdk-browser/safaridriver.log 2>&1 &
+            driver_pid=$!
+            trap 'kill "$driver_pid"' EXIT
+          fi
+          pnpm test:sdk:web:browser
+          pnpm test:sdk:web:react
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: web-native-${{ matrix.browser }}-${{ github.sha }}
+          path: |
+            .local/web-sdk-browser/
+            .local/web-sdk-react/
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 14

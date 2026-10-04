@@ -1,0 +1,10 @@
+packages:
+  - packages/*
+  - sdks/web/packages/*
+  - sdks/web/examples/*
+engineStrict: true
+saveExact: true
+storeDir: .pnpm-store
+verifyDepsBeforeRun: error
+allowBuilds:
+  esbuild: true

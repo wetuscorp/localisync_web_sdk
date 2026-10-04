@@ -1,0 +1,52 @@
+{
+  "name": "localisync_sdk_generator",
+  "version": "0.1.0",
+  "description": "Localisync cli SDK",
+  "type": "module",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "LICENSE",
+    "NOTICE",
+    "licenses",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "node ../../tool/build.mjs cli",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src --max-warnings=0",
+    "format:check": "prettier --check src package.json tsconfig.json"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3",
+    "@types/node": "24.10.1",
+    "eslint": "9.39.4",
+    "@eslint/js": "9.39.4",
+    "typescript-eslint": "8.71.0",
+    "eslint-config-prettier": "10.1.8",
+    "prettier": "3.8.3",
+    "esbuild": "0.28.2",
+    "vitest": "5.0.3",
+    "zod": "4.6.5",
+    "localisync_sdk": "workspace:*"
+  },
+  "bin": {
+    "localisync": "./dist/index.js"
+  },
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "private": true,
+  "peerDependencies": {
+    "localisync_sdk": "0.1.0"
+  }
+}

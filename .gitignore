@@ -1,0 +1,16 @@
+node_modules/
+.pnpm-store/
+dist/
+.next/
+out/
+.local/
+*.tsbuildinfo
+__pycache__/
+*.pyc
+sdks/web/examples/*/generated/
+sdks/web/examples/*/public/localisync.json
+sdks/web/examples/*/public/worker.js
+sdks/web/examples/*/public/localisync.js
+sdks/web/examples/*/public/bundle.json
+sdks/web/examples/*/public/symbol.svg
+.env*

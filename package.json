@@ -1,0 +1,27 @@
+{
+  "name": "localisync-web-sdk-source",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.5.0",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "scripts": {
+    "build:sdk:web": "pnpm --filter @localisync/delivery-protocol build && pnpm --filter localisync_sdk build && pnpm --filter localisync_sdk_generator build",
+    "test:sdk:web": "pnpm build:sdk:web && pnpm --filter localisync_sdk exec vitest run test",
+    "test:sdk:web:browser": "pnpm build:sdk:web && node sdks/web/tool/browser-tests.mjs",
+    "sdk:web:pack": "pnpm build:sdk:web && node sdks/web/tool/pack.mjs",
+    "sdk:web:benchmark": "pnpm build:sdk:web && node sdks/web/tool/benchmark.mjs",
+    "test:sdk:web:react": "pnpm build:sdk:web && node sdks/web/tool/react-tests.mjs",
+    "test:sdk:web:next": "pnpm build:sdk:web && node sdks/web/tool/next-tests.mjs",
+    "test:sdk:web:cli": "pnpm build:sdk:web && node sdks/web/tool/cli-tests.mjs",
+    "build": "pnpm build:sdk:web",
+    "check": "pnpm build:sdk:web && pnpm -r lint && pnpm -r typecheck && pnpm -r format:check",
+    "test": "pnpm test:sdk:web",
+    "release:assets": "python3 sdks/web/tool/release_assets.py"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0"
+  }
+}

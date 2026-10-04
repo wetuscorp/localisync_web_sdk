@@ -1,0 +1,12 @@
+{
+  "name": "@localisync/example-npm",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node ../../tool/example-build.mjs npm"
+  },
+  "dependencies": {
+    "localisync_sdk": "workspace:*"
+  }
+}

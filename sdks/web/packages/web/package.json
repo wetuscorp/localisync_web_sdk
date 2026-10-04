@@ -1,0 +1,113 @@
+{
+  "name": "localisync_sdk",
+  "version": "0.1.0",
+  "description": "Offline-first translations for JavaScript, TypeScript, React and Node.js",
+  "type": "module",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "LICENSE",
+    "NOTICE",
+    "licenses",
+    "README.md",
+    "CHANGELOG.md",
+    "CORE.md",
+    "REACT.md"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./server": {
+      "types": "./dist/server.d.ts",
+      "import": "./dist/server.js",
+      "default": "./dist/server.js"
+    },
+    "./dom": {
+      "types": "./dist/dom.d.ts",
+      "import": "./dist/dom.js",
+      "default": "./dist/dom.js"
+    },
+    "./compiler": {
+      "types": "./dist/compiler.d.ts",
+      "import": "./dist/compiler.js",
+      "default": "./dist/compiler.js"
+    },
+    "./worker.js": "./dist/worker.js",
+    "./core": {
+      "types": "./dist/core.d.ts",
+      "import": "./dist/core.js",
+      "default": "./dist/core.js"
+    },
+    "./react": {
+      "types": "./dist/react.d.ts",
+      "import": "./dist/react.js",
+      "default": "./dist/react.js"
+    },
+    "./react/server": {
+      "types": "./dist/react-server.d.ts",
+      "import": "./dist/react-server.js",
+      "default": "./dist/react-server.js"
+    },
+    "./localisync.js": "./dist/localisync.js"
+  },
+  "scripts": {
+    "build": "node ../../tool/build.mjs web",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src --max-warnings=0",
+    "format:check": "prettier --check src package.json tsconfig.json"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3",
+    "@types/node": "24.10.1",
+    "eslint": "9.39.4",
+    "@eslint/js": "9.39.4",
+    "typescript-eslint": "8.71.0",
+    "eslint-config-prettier": "10.1.8",
+    "prettier": "3.8.3",
+    "esbuild": "0.28.2",
+    "vitest": "5.0.3",
+    "@localisync/delivery-protocol": "workspace:*",
+    "jose": "6.2.12",
+    "zod": "4.6.5",
+    "@formatjs/icu-messageformat-parser": "3.5.20",
+    "jsonc-parser": "3.3.1",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.4"
+  },
+  "peerDependencies": {
+    "react": ">=19.2.4 <20"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wetuscorp/localisync_web_sdk.git",
+    "directory": "sdks/web/packages/web"
+  },
+  "homepage": "https://docs.localisync.com/sdks/web/quick-start/",
+  "bugs": {
+    "url": "https://github.com/wetuscorp/localisync_web_sdk/issues"
+  },
+  "keywords": [
+    "localisync",
+    "localization",
+    "i18n",
+    "translations",
+    "offline",
+    "react",
+    "icu"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}

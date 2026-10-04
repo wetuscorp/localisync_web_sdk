@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "languages": [
+    {
+      "locale": "en",
+      "fallback": null
+    },
+    {
+      "locale": "tr",
+      "fallback": "en"
+    }
+  ],
+  "locales": [
+    {
+      "locale": "en",
+      "entries": [
+        {
+          "key": "greeting",
+          "format": "icu",
+          "parameters": [
+            {
+              "name": "name",
+              "type": "text"
+            }
+          ],
+          "value": "Hello {name}"
+        },
+        {
+          "key": "basket",
+          "format": "icu",
+          "parameters": [
+            {
+              "name": "count",
+              "type": "number"
+            }
+          ],
+          "value": "{count, plural, one {# item} other {# items}}"
+        }
+      ]
+    },
+    {
+      "locale": "tr",
+      "entries": [
+        {
+          "key": "greeting",
+          "format": "icu",
+          "parameters": [
+            {
+              "name": "name",
+              "type": "text"
+            }
+          ],
+          "value": "Merhaba {name}"
+        },
+        {
+          "key": "basket",
+          "format": "icu",
+          "parameters": [
+            {
+              "name": "count",
+              "type": "number"
+            }
+          ],
+          "value": "{count, plural, one {# item} other {# items}}"
+        }
+      ]
+    }
+  ]
+}
