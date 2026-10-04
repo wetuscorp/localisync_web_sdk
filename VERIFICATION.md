@@ -27,11 +27,36 @@ as completed. Source provenance is recorded separately in export-manifest.json.
 - Export tests check explicit files, deterministic hashes, changed public files,
   path traversal/symlinks, Git metadata and refusal to release a dirty preview.
 
+## Local performance revalidation
+
+2026-10-04, Apple M2 Max, 64 GiB RAM, macOS arm64, Node 24.16.0,
+headless Chromium 153.0.8010.12. Loopback HTTP, 30 cold/cache starts per profile;
+5,000 lookup warmups and 20,000 measured lookups per repetition (600,000 samples
+per profile). Download, verification, preparation, worker transfer and activation
+are recorded separately by the benchmark tool. These are laboratory observations,
+not internet timings, a controlled hardware comparison or service guarantees.
+
+| Profile | Keys / values | Payload bytes | Browser cold/cache p95 ms | Node cold/cache p95 ms | Plain lookup p95/p99 µs | ICU lookup p95/p99 µs |
+| --- | --- | --- | --- | --- | --- | --- |
+| small | 100 / 500 | 82715 | 82.3 / 51.1 | 186.4 / 107.3 | 0.125 / 0.208 | 0.917 / 1.417 |
+| icu | 10000 / 50000 | 8772215 | 1090.0 / 1023.7 | 1448.2 / 1382.0 | 0.125 / 0.167 | 0.959 / 1.166 |
+| long | 10000 / 50000 | 99729725 | 1805.8 / 1645.9 | 2991.5 / 2866.4 | 0.125 / 0.167 | Plain-only profile |
+
+The measured maximum frame interval was 16.8 ms, matching the control, with no
+reported browser long tasks in these samples. Browser heap/storage estimates are
+approximate and may be quantized or compressed. Node RSS includes the benchmark
+fixture/server and retained runtime allocations, so it is not an SDK-only heap
+measurement. The large-profile six-update test preserved 100 pinned views per
+update and a verified offline restart. Process RSS ranged from 1.43 to 1.71 GB;
+this short run does not establish a leak-free long-running service. Worker/cache
+failure and disposal boundaries are also covered by acceptance tests.
+
 ## Remaining evidence
 
-Performance revalidation and final versioned archives are being finalized. Hosted
-Web CI is authorized and its first candidate run is pending. Real Edge and current Safari execution
-for this release have not yet been recorded. WebKit is not Safari, and Chromium is
+Hosted Web CI is authorized and candidate runs are pending. The first Windows
+run found the test tool launcher did not accept pnpm's native executable; the launcher
+now supports it without a shell. Real Edge and current Safari execution for this
+release have not yet been recorded. WebKit is not Safari, and Chromium is
 not Edge. Previous browser majors, physical mobile/minimum hardware, long-running
 soak and production-network acceptance remain outside the executed local matrix.
 No six-platform or production SLA claim follows from publication.
