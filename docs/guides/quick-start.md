@@ -14,7 +14,7 @@ Use Node 24 for building examples and server rendering. A project member can rea
 ## Install the runtime
 
 ```sh
-npm install localisync_sdk@0.1.0
+npm install localisync_sdk@0.1.1
 ```
 
 One package supplies browser, core, DOM, Node and optional React entry points. React consumers use their application's React installation; a plain JavaScript consumer does not install React.
@@ -22,7 +22,7 @@ One package supplies browser, core, DOM, Node and optional React entry points. R
 For the optional build-time generator, install the matching release asset as a development dependency:
 
 ```sh
-npm install --save-dev https://github.com/wetuscorp/localisync_web_sdk/releases/download/v0.1.0/localisync_sdk_generator-0.1.0.tgz
+npm install --save-dev https://github.com/wetuscorp/localisync_web_sdk/releases/download/v0.1.1/localisync_sdk_generator-0.1.1.tgz
 ```
 
 The generator is not published as a second npm SDK. It is not imported by runtime code.

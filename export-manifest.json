@@ -6,16 +6,16 @@
     ".node-version": "2722b61f414f07f08be7f1f1316012813818f26f1c40d6a24a748686cec7d2ff",
     "CONTRIBUTING.md": "9dd46c4ed6d63fc9509606d974931e5fd4309005693b12515325241e7f225df1",
     "LICENSE": "7f59085b9167d9b978d1b82c0c0e5629c918c48e508c378189637048c3c85697",
-    "README.md": "308fc6685757556ee69b855cbe709143869e289135719aaf64fb88b81dd984b6",
+    "README.md": "d5a23ed0d7aa2353f0d8acd261bb3a6e3bed5c266dda7b7ca9d6d01e9a996cb4",
     "VERIFICATION.md": "199ceb2294bf72777a147db61954fb9ac0a569644e5e84ca71dbf10f5062f728",
     "assets/brand/symbol.svg": "9f04fbc33eca990dce30597851453d8792537d690745984d46a1fb3d97e988d6",
     "docs/guides/api.md": "00607a788d59bfcb8869594d6f2c6ebb629f4287a8feecc5f7946cc2a8c7e291",
-    "docs/guides/html.md": "2240f0b3906f0e12a91ff77bbf18e1062a949b02ca37b24f3e367d6b2032a645",
+    "docs/guides/html.md": "3ed9ffc3b6bf65affe98b2248b7a3c08c86573f532c48b0c3dd116c13147070f",
     "docs/guides/icu-locales.md": "34deb809a2ea58fa33a4a3d48f694192685b56ca20e9018754939584c73a6ae8",
-    "docs/guides/migration.md": "6359c14bdbf8eb389357f0e166a8c22dadf9696cca12456da8629e30d39cd03b",
+    "docs/guides/migration.md": "036d02b5dc42f01ea85775d9c11e0f39d517b42109c64dfe6300569888998512",
     "docs/guides/offline-security.md": "7b30b7a3f7e2b4dd066a376733ec8e24f9fbf5483736f93ab98ba84569ff9f02",
-    "docs/guides/platforms-maintenance.md": "591b9b1af44675985e21e979b207f8a5b54df735e2be6ca5a30f34769a88e41c",
-    "docs/guides/quick-start.md": "19629a7382cfedce11c76b339d37621c88e2c449a1b95855a2f74ee675e98f44",
+    "docs/guides/platforms-maintenance.md": "281a25e09f4a1d928cc3ff52b7a6530f09f4dce6d041b9571873ba1da163f7ee",
+    "docs/guides/quick-start.md": "7ab19718a6e097dc90a76a69daf2dc261c81ae7b2d28696d019aa7f4431116ef",
     "docs/guides/react-nextjs.md": "bab7ef05eaa300e80ee12404f6b78d8742f29456c965bba48e53c0b1707e6272",
     "licenses/flutter/Unicode-LICENSE.txt": "220ba0e1c43b99530d2d5bdb892a99dca0989414f51ab695ecd90163eaa1ec3b",
     "package.json": "8a48dbb11c8de784eba9dd6d881b36150d80e3739a12f802889bfe46c0102b25",
@@ -129,5 +129,5 @@
   },
   "preview": false,
   "schema": 1,
-  "sourceCommit": "05b62cf9b2eb563bfaaadecab243f57472cab283"
+  "sourceCommit": "ef7e6aa1e9ec82d9fa2a55d4bd008456c1cf7086"
 }

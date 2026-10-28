@@ -9,7 +9,7 @@ Use this integration for pages that own their DOM. Do not bind a subtree also ma
 
 ## Assets
 
-Download `localisync_sdk-0.1.0-script.zip` from the [versioned GitHub Release](https://github.com/wetuscorp/localisync_web_sdk/releases/tag/v0.1.0), verify it against the release `SHA256SUMS`, and extract the matching `localisync.js` and `worker.js`. You can also copy `dist/localisync.js` and `dist/worker.js` from the same Web package version onto your application origin. No CDN is required. The script exposes `window.Localisync.createClient` and `window.Localisync.bindDom`; it does not create a global client or change a global locale.
+Download `localisync_sdk-0.1.1-script.zip` from the [versioned GitHub Release](https://github.com/wetuscorp/localisync_web_sdk/releases/tag/v0.1.1), verify it against the release `SHA256SUMS`, and extract the matching `localisync.js` and `worker.js`. You can also copy `dist/localisync.js` and `dist/worker.js` from the same Web package version onto your application origin. No CDN is required. The script exposes `window.Localisync.createClient` and `window.Localisync.bindDom`; it does not create a global client or change a global locale.
 
 ```html
 <script src="/assets/localisync/localisync.js" defer></script>

@@ -5,7 +5,7 @@ sidebar:
   order: 8
 ---
 
-The first public Web release uses one `localisync_sdk` package. Applications that used the earlier repository archives should remove their archive dependencies and workspace overrides, then install `localisync_sdk@0.1.0`.
+The first public Web release uses one `localisync_sdk` package. Applications that used the earlier repository archives should remove their archive dependencies and workspace overrides, then install `localisync_sdk@0.1.1`.
 
 | Earlier import             | Public import                 |
 | -------------------------- | ----------------------------- |
@@ -29,8 +29,8 @@ Validate the first offline translation, signed refresh, React hydration or reque
 
 Literal tags and unused declared parameters require a runtime and generator release that
 explicitly supports those rules. The signed wire version has not changed; that does not
-make older validators compatible. This local implementation does not publish an updated
-npm package or establish support in the existing `0.1.0` release.
+make older validators compatible. Version `0.1.1` adds this support. Upgrade the runtime, generator and worker as a set;
+the existing `0.1.0` release does not support the expanded message rules.
 
 Upgrade the runtime, matching worker and generator together; regenerate the bundled
 baseline and typed API, retaining every declared parameter. Verify offline startup,

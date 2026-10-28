@@ -5,8 +5,7 @@ Prepared translations are synchronous; bundled and verified cached messages rema
 available during delivery failures. Updates check once at startup, then on explicit
 `refresh()` calls. React is optional. SDK code is MIT licensed.
 
-The 0.1.1 candidate adds literal-tag and unused-declaration compatibility. Check the registry
-and release status before installing this candidate. Install [localisync_sdk from npm](https://www.npmjs.com/package/localisync_sdk):
+Published version 0.1.1 adds literal-tag and unused-declaration compatibility. Install [localisync_sdk from npm](https://www.npmjs.com/package/localisync_sdk):
 
 ```sh
 npm install localisync_sdk@0.1.1
