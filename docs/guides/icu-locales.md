@@ -20,6 +20,10 @@ ICU is compiled before activation. Supported expressions are named variables, `s
 }
 ```
 
-Cardinal/ordinal rules are generated from the same verified CLDR 48.2.1 source as Flutter. Number presentation uses cached `Intl.NumberFormat` instances. A fallback message is formatted using the language where it was found, not the requested language. Date/number format expressions and rich markup are not added by this SDK.
+Cardinal/ordinal rules are generated from the same verified CLDR 48.2.1 source as Flutter. Number presentation uses cached `Intl.NumberFormat` instances. A fallback message is formatted using the language where it was found, not the requested language. Advanced date/number format expressions and rich-text rendering are not added by this SDK.
 
 `setLocale()` prepares only the same active release and needed fallback chain; it does not check the channel for a new publication. Failed preparation preserves the current locale. Use `preparedLocales` to prepare additional synchronous server views ahead of requests. New code-generated methods require regeneration and an application build.
+
+The expanded import message rules require a compatible SDK release and consumer update;
+see [runtime compatibility](/transfers/formats/#runtime-compatibility). Literal tags must
+never be inserted as untrusted HTML.

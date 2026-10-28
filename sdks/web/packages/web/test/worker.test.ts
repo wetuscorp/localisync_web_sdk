@@ -31,7 +31,7 @@ class Endpoint implements WorkerEndpoint {
     this.commands.push(command)
     let response: Response | undefined
     if (command.type === 'init' || command.type === 'contracts')
-      response = { type: 'ready', version: '0.1.0', id: command.id }
+      response = { type: 'ready', version: '0.1.1', id: command.id }
     else if (command.type === 'dispose') response = { type: 'closed', id: command.id }
     else if (command.type === 'restore') response = { type: 'end', empty: true, id: command.id }
     if (response) queueMicrotask(() => this.receive(response))

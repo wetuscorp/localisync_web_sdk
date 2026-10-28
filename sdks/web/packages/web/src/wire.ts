@@ -2,7 +2,7 @@ import { z } from 'zod'
 import type { MessageNode, PreparedBundle, PreparedEntry } from './core/index.js'
 import { deliveryConfigSchema } from './config.js'
 
-export const workerVersion = '0.1.0'
+export const workerVersion = '0.1.1'
 const nodeSchema: z.ZodType<MessageNode> = z.lazy(() =>
   z.discriminatedUnion('kind', [
     z.object({ kind: z.literal('text'), value: z.string() }),

@@ -1,6 +1,6 @@
 {
   "name": "localisync_sdk_generator",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Localisync cli SDK",
   "type": "module",
   "license": "MIT",
@@ -36,7 +36,7 @@
     "prettier": "3.8.3",
     "esbuild": "0.28.2",
     "vitest": "5.0.3",
-    "zod": "4.6.5",
+    "zod": "4.6.6",
     "localisync_sdk": "workspace:*"
   },
   "bin": {
@@ -47,6 +47,6 @@
   },
   "private": true,
   "peerDependencies": {
-    "localisync_sdk": "0.1.0"
+    "localisync_sdk": "0.1.1"
   }
 }

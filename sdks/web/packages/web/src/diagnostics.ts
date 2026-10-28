@@ -86,7 +86,7 @@ export class DiagnosticsReporter {
             id: crypto.randomUUID(),
             observedAt: new Date(item.time).toISOString(),
             sdk: 'web',
-            sdkVersion: '0.1.0',
+            sdkVersion: '0.1.1',
             appVersion: this.appVersion,
             code: item.code,
             stage: item.stage,

@@ -34,17 +34,20 @@ export function compileEntry(input: unknown): PreparedEntry {
   if (entry.value === null || entry.format === 'plain') return freezePrepared({ ...entry, program: null })
   let ast: MessageFormatElement[]
   try {
-    ast = parse(entry.value, { requiresOtherClause: true, captureLocation: false, shouldParseSkeletons: false })
+    ast = parse(entry.value, {
+      ignoreTag: true,
+      requiresOtherClause: true,
+      captureLocation: false,
+      shouldParseSkeletons: false
+    })
   } catch {
     throw new LocalisyncError('verification', 'Invalid ICU message syntax.')
   }
   let count = 0
-  const used = new Map<string, 'text' | 'number'>()
   const argument = (name: string, type?: 'text' | 'number') => {
     const expected = declared.get(name)
     if (!expected || (type && expected !== type))
       throw new LocalisyncError('verification', 'ICU arguments do not match the key contract.')
-    used.set(name, expected)
   }
   const nodes = (elements: MessageFormatElement[], depth: number): readonly MessageNode[] =>
     elements.map(element => {
@@ -77,8 +80,6 @@ export function compileEntry(input: unknown): PreparedEntry {
       throw new LocalisyncError('verification', 'This ICU expression is not supported by the delivery protocol.')
     })
   const program = nodes(ast, 0)
-  if (used.size !== declared.size)
-    throw new LocalisyncError('verification', 'The message does not use every declared parameter.')
   return freezePrepared({ ...entry, program })
 }
 /** Development/build-time compiler. Runtime reads never invoke this function. */

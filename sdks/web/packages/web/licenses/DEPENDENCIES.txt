@@ -103,7 +103,7 @@ IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 ----------------------------------------
 
-zod 4.6.5
+zod 4.6.6
 
 MIT License
 

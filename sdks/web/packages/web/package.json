@@ -1,6 +1,6 @@
 {
   "name": "localisync_sdk",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Offline-first translations for JavaScript, TypeScript, React and Node.js",
   "type": "module",
   "license": "MIT",
@@ -72,7 +72,7 @@
     "vitest": "5.0.3",
     "@localisync/delivery-protocol": "workspace:*",
     "jose": "6.2.12",
-    "zod": "4.6.5",
+    "zod": "4.6.6",
     "@formatjs/icu-messageformat-parser": "3.5.20",
     "jsonc-parser": "3.3.1",
     "react": "19.2.4",
